@@ -2,7 +2,7 @@
 
 public class EnemyManager : MonoBehaviour
 {
-    public PlayerHealth playerHealth;
+    public PlayerAttributes playerAttributes;
     public GameObject enemy;
     public float spawnTime = 3f;
     public Transform[] spawnPoints;
@@ -21,7 +21,7 @@ public class EnemyManager : MonoBehaviour
     void Spawn ()
     {
         //Jika player mati maka tidak usah meng-spawn enemy baru
-        if (playerHealth.currentHealth <= 0f)
+        if (playerAttributes.currentHealth <= 0f)
         {
             return;
         }

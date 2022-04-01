@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Collections;
 
-public class PlayerHealth : MonoBehaviour
+public class PlayerAttributes : MonoBehaviour
 {
     public int startingHealth = 100;
     public int currentHealth;
@@ -24,7 +24,6 @@ public class PlayerHealth : MonoBehaviour
 
     void Awake()
     {
-        //Mendapatkan reference komponen
         anim = GetComponent<Animator>();
         playerAudio = GetComponent<AudioSource>();
         playerMovement = GetComponent<PlayerMovement>();
@@ -37,19 +36,15 @@ public class PlayerHealth : MonoBehaviour
 
     void Update()
     {
-        //Jika terkena damage
         if (damaged)
         {
-            //Merubah warna gambar menjadi value flashcolour
             damageImage.color = flashColour;
         }
         else
         {
-            //Fade out damage image
             damageImage.color = Color.Lerp(damageImage.color, Color.clear, flashSpeed * Time.deltaTime);
         }
 
-        //Set damaged to false
         damaged = false;
     }
 
@@ -59,16 +54,12 @@ public class PlayerHealth : MonoBehaviour
     {
         damaged = true;
 
-        //Mengurangi health
         currentHealth -= amount;
 
-        //Mengupdate health slider
         healthSlider.value = currentHealth;
 
-        //Memainkan suara ketika player terkena damage
         playerAudio.Play();
 
-        //Mengecek apakah player sudah mati
         if (currentHealth <= 0 && !isDead)
         {
             Death();
@@ -82,10 +73,8 @@ public class PlayerHealth : MonoBehaviour
 
         playerShooting.DisableEffects();
 
-        //Meng-trigger animasi die
         anim.SetTrigger("Die");
 
-        //Memainkan suara ketika mati
         playerAudio.clip = deathClip;
         playerAudio.Play();
 
@@ -95,7 +84,6 @@ public class PlayerHealth : MonoBehaviour
 
     public void RestartLevel ()
     {
-        //meload ulang scene dengan index 0 pada build setting
         SceneManager.LoadScene(0);
     }
 }

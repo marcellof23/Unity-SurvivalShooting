@@ -9,7 +9,7 @@ public class EnemyAttack : MonoBehaviour
 
     Animator anim;
     GameObject player;
-    PlayerHealth playerHealth;
+    PlayerAttributes playerAttributes;
     EnemyHealth enemyHealth;
     bool playerInRange;
     float timer;
@@ -21,7 +21,7 @@ public class EnemyAttack : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
 
         //Mendapatkan komponen player health
-        playerHealth = player.GetComponent<PlayerHealth>();
+        playerAttributes = player.GetComponent<PlayerAttributes>();
 
         //Mendapatkan enemy health
         enemyHealth = GetComponent<EnemyHealth>();
@@ -61,7 +61,7 @@ public class EnemyAttack : MonoBehaviour
         }
 
         //Meng-trigger player death
-        if (playerHealth.currentHealth <= 0)
+        if (playerAttributes.currentHealth <= 0)
         {
             anim.SetTrigger("PlayerDead");
         }
@@ -74,9 +74,9 @@ public class EnemyAttack : MonoBehaviour
         timer = 0f;
 
         //Give damage to player
-        if (playerHealth.currentHealth > 0)
+        if (playerAttributes.currentHealth > 0)
         {
-            playerHealth.TakeDamage(attackDamage);
+            playerAttributes.TakeDamage(attackDamage);
         }
     }
 }
