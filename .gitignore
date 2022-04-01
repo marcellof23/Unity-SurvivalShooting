@@ -58,3 +58,9 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+# Unity Build file
+Survival\ Shooter
+Survival\ Shooter_Data
+UnityCrashHandler64
+UnityPlayer.dll
+MonoBleedingEdge
