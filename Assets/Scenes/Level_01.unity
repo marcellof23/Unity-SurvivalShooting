@@ -734,7 +734,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76a99222b1e4a384e923ac7e86efc709, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerAttributes: {fileID: 0}
+  playerAttributes: {fileID: 747723482}
   enemy: {fileID: 4286800880168527094, guid: f264ab47e25d0374ba89abced0b94b2a, type: 3}
   spawnTime: 3
   spawnPoints:
@@ -752,7 +752,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76a99222b1e4a384e923ac7e86efc709, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerAttributes: {fileID: 0}
+  playerAttributes: {fileID: 747723482}
   enemy: {fileID: 2932399399175868451, guid: 3688f3f3f312c984fa78e00c09819e6c, type: 3}
   spawnTime: 3
   spawnPoints:
@@ -770,7 +770,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76a99222b1e4a384e923ac7e86efc709, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerAttributes: {fileID: 0}
+  playerAttributes: {fileID: 747723482}
   enemy: {fileID: 8994396258513351580, guid: 46bb35ce7a126bc438daf9048924c66a, type: 3}
   spawnTime: 3
   spawnPoints:
