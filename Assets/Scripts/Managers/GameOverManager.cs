@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 public class GameOverManager : MonoBehaviour
 {
     public Text warningText;
-    public PlayerHealth playerHealth;       
+    public PlayerAttributes playerAttributes;       
     public float restartDelay = 5f;            
 
 
@@ -21,7 +21,7 @@ public class GameOverManager : MonoBehaviour
 
     void Update()
     {
-        if (playerHealth.currentHealth <= 0)
+        if (playerAttributes.currentHealth <= 0)
         {
             anim.SetTrigger("GameOver");
 
