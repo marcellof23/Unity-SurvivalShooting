@@ -30,7 +30,6 @@ public class EnemyManager : MonoBehaviour
         int spawnPointIndex = Random.Range(0, spawnPoints.Length);
         int spawnEnemy = Random.Range(0, 3);
 
-        //Menduplikasi enemy
         Factory.FactoryMethod(spawnEnemy, spawnPoints[spawnPointIndex].position, spawnPoints[spawnPointIndex].rotation);
     }
 }
