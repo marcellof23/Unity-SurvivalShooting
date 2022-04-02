@@ -15,8 +15,31 @@ public class AttributesUIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        health.text = playerAttributes.currentHealthModifier + "x";
-        attack.text = playerAttributes.currentShootingPowerModifier + "x";
-        speed.text = playerAttributes.currentSpeedModifier + "x";
+        if(playerAttributes.currentHealthModifier >= PlayerAttributes.maxHealthModifier)
+        {
+            health.text = playerAttributes.currentHealthModifier + "x (MAX)";
+        }
+        else
+        {
+            health.text = playerAttributes.currentHealthModifier + "x";
+        }
+
+        if (playerAttributes.currentShootingPowerModifier >= PlayerAttributes.maxShootingPowerModifier)
+        {
+            attack.text = playerAttributes.currentShootingPowerModifier + "x (MAX)";
+        }
+        else
+        {
+            attack.text = playerAttributes.currentShootingPowerModifier + "x";
+        }
+
+        if (playerAttributes.currentSpeedModifier >= PlayerAttributes.maxSpeedModifier)
+        {
+            speed.text = playerAttributes.currentSpeedModifier + "x (MAX)";
+        }
+        else
+        {
+            speed.text = playerAttributes.currentSpeedModifier + "x";
+        }
     }
 }

@@ -40,10 +40,11 @@ public class PlayerAttributes : MonoBehaviour
 
         playerShooting = GetComponentInChildren<PlayerShooting>();
 
-        currentHealthModifier = 3.1F;
+        currentHealthModifier = 1F;
+        currentShootingPowerModifier = 1F;
+        currentSpeedModifier = 2F;
+
         currentHealth = startingHealth;
-        currentShootingPowerModifier = 2.2F;
-        currentSpeedModifier = 2;
     }
 
 
