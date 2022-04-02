@@ -5,8 +5,17 @@ using System.Collections;
 
 public class PlayerAttributes : MonoBehaviour
 {
-    public int startingHealth = 100;
+
     public int currentHealth;
+
+    public static float maxHealthModifier = 2F;
+    public static float maxShootingPowerModifier = 2F;
+    public static float maxSpeedModifier = 2F;
+
+    public float currentHealthModifier;
+    public float currentShootingPowerModifier;
+    public float currentSpeedModifier;
+
     public Slider healthSlider;
     public Image damageImage;
     public AudioClip deathClip;
@@ -30,7 +39,10 @@ public class PlayerAttributes : MonoBehaviour
 
         playerShooting = GetComponentInChildren<PlayerShooting>();
 
-        currentHealth = startingHealth;
+        currentHealthModifier = 1.1F;
+        currentHealth = 100;
+        currentShootingPowerModifier = 2.2F;
+        currentSpeedModifier = 2;
     }
 
 
@@ -49,7 +61,6 @@ public class PlayerAttributes : MonoBehaviour
     }
 
 
-    //Fungsi untuk mendapat damage
     public void TakeDamage(int amount)
     {
         damaged = true;
