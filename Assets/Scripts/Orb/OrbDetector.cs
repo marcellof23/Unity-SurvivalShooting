@@ -5,18 +5,27 @@ using UnityEngine;
 public class OrbDetector : MonoBehaviour
 {
 
-    void Update()
+    GameObject player;
+
+    private void Awake()
     {
-        
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        print("NABRAK ORB");
+        if(other.gameObject == player && other.isTrigger == false)
+        {
+            print("NABRAK ORB");
+        }
+
     }
 
     private void OnTriggerExit(Collider other)
     {
-        print("KELUAR ORB");
+        if (other.gameObject == player && other.isTrigger == false)
+        {
+            print("KELUAR ORB");
+        }
     }
 }
