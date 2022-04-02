@@ -14,7 +14,6 @@ public class EnemyAttack : MonoBehaviour
     bool playerInRange;
     float timer;
 
-
     void Awake ()
     {
         //Mencari game object dengan tag player

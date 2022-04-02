@@ -13,8 +13,10 @@ public class EnemyHealth : MonoBehaviour
     AudioSource enemyAudio;
     ParticleSystem hitParticles;
     CapsuleCollider capsuleCollider;
+    WaveModeManager waveManager;
     bool isDead;
     bool isSinking;
+    bool isWaveMode;
 
 
     void Awake ()
@@ -24,6 +26,9 @@ public class EnemyHealth : MonoBehaviour
         enemyAudio = GetComponent<AudioSource>();
         hitParticles = GetComponentInChildren<ParticleSystem>();
         capsuleCollider = GetComponent <CapsuleCollider> ();
+        waveManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<WaveModeManager>();
+
+        isWaveMode = waveManager != null;
 
         //Set current health
         currentHealth = startingHealth;
@@ -68,7 +73,7 @@ public class EnemyHealth : MonoBehaviour
     }
 
 
-    void Death ()
+    public virtual void Death()
     {
         //Set isDead
         isDead = true;
@@ -82,6 +87,17 @@ public class EnemyHealth : MonoBehaviour
         //Play enemy death audio
         enemyAudio.clip = deathClip;
         enemyAudio.Play();
+
+        if(isWaveMode)
+        {
+            waveManager.enemiesKilled++;
+            print("Enemies Killed : " + waveManager.enemiesKilled);
+            print("Total Enemy : " + waveManager.totalEnemy);
+            if (waveManager.enemiesKilled == waveManager.totalEnemy)
+            {
+                waveManager.NextWave();
+            }
+        }
     }
 
 
@@ -94,6 +110,10 @@ public class EnemyHealth : MonoBehaviour
         GetComponent<Rigidbody>().isKinematic = true;
         isSinking = true;
         ScoreManager.score += scoreValue;
+        if(isWaveMode)
+        {
+            WaveModeScoreManager.score += scoreValue;
+        }
         Destroy (gameObject, 2f);
     }
 }

@@ -11,14 +11,14 @@ public class EnemyManager : MonoBehaviour
     MonoBehaviour factory;
     IFactory Factory { get { return factory as IFactory; } }
 
-    void Start ()
+    void Start()
     {
         //Mengeksekusi perintah spawn dengan interval spawnTime
         InvokeRepeating("Spawn", spawnTime, spawnTime);
     }
 
 
-    void Spawn ()
+    void Spawn()
     {
         //Jika player mati maka tidak usah meng-spawn enemy baru
         if (playerAttributes.currentHealth <= 0f)
