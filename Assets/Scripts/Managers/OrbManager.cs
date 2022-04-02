@@ -3,7 +3,7 @@ using UnityEngine;
 public class OrbManager : MonoBehaviour
 {
     public PlayerAttributes playerAttributes;
-    public float spawnTime = 3f;
+    public float spawnTime = 12f;
     Vector3[] spawnPoints;
 
     [SerializeField]
@@ -13,10 +13,10 @@ public class OrbManager : MonoBehaviour
     void Start()
     {
         spawnPoints = new Vector3[4];
-        spawnPoints[0] = new Vector3(0, 0, 0);
-        spawnPoints[1] = new Vector3(0, 0, 0);
-        spawnPoints[2] = new Vector3(0, 0, 0);
-        spawnPoints[3] = new Vector3(0, 0, 0);
+        spawnPoints[0] = new Vector3(-5.62f, 1, 21.46f);
+        spawnPoints[1] = new Vector3(-21.55f, 1, -5.83f);
+        spawnPoints[2] = new Vector3(1.35f, 1, -16.65f);
+        spawnPoints[3] = new Vector3(20.15f, 1, -8.2f);
         InvokeRepeating("Spawn", spawnTime, spawnTime);
     }
 
@@ -33,6 +33,7 @@ public class OrbManager : MonoBehaviour
 
         Quaternion rotation = new Quaternion();
 
+        print("ORB: " + spawnPoints[spawnPointIndex] + rotation);
         Factory.FactoryMethod(spawnOrb, spawnPoints[spawnPointIndex], rotation);
     }
 }
