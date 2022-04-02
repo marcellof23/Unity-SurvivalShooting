@@ -14,7 +14,9 @@ public class PlayerShooting : MonoBehaviour
     LineRenderer gunLine;                           
     AudioSource gunAudio;                           
     Light gunLight;                                 
-    float effectsDisplayTime = 0.2f;                
+    float effectsDisplayTime = 0.2f;
+
+    public PlayerAttributes playerAttributes;
 
     void Awake()
     {
@@ -83,7 +85,7 @@ public class PlayerShooting : MonoBehaviour
             if (enemyHealth != null)
             {
                 //Beri damage ke musuh
-                enemyHealth.TakeDamage(damagePerShot, shootHit.point);
+                enemyHealth.TakeDamage((int)System.Math.Round((float)damagePerShot * playerAttributes.currentShootingPowerModifier), shootHit.point);
             }
 
             //Set line end position ke hit position
