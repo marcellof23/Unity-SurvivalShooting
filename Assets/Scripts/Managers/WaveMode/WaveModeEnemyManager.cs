@@ -29,7 +29,7 @@ public class WaveModeEnemyManager : MonoBehaviour
 
         //Mendapatkan nilai random untuk spawn point enemy
         int spawnPointIndex = Random.Range(0, spawnPoints.Length);
-        int spawnEnemy = Random.Range(0, 3);
+        int spawnEnemy = Random.Range(0, 4);
 
         if (spawnEnemy == 0)
         {
@@ -57,13 +57,28 @@ public class WaveModeEnemyManager : MonoBehaviour
                 return;
             }
         }
-        else
+        else if (spawnEnemy == 2)
         {
             if (waveManager.currentWeight + 3 <= waveManager.enemySpawnWeight)
             {
                 waveManager.currentWeight += 3;
                 waveManager.totalEnemy += 1;
                 Factory.FactoryMethod(spawnEnemy, spawnPoints[spawnPointIndex].position, spawnPoints[spawnPointIndex].rotation);
+            }
+            else
+            {
+                return;
+            }
+        } else
+        {
+            if (waveManager.currentWeight + 1 <= waveManager.enemySpawnWeight)
+            {
+                waveManager.currentWeight += 1;
+                waveManager.totalEnemy += 1;
+                float x = Random.Range(-15, 15);
+                float y = 0f;
+                float z = Random.Range(-15, 15);
+                Factory.FactoryMethod(spawnEnemy, new Vector3(x, y, z), Quaternion.identity);
             }
             else
             {
