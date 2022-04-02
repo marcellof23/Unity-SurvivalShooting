@@ -6,6 +6,8 @@ public class OrbManager : MonoBehaviour
     public float spawnTime = 12f;
     Vector3[] spawnPoints;
 
+    public GameOverManager gameOverManager;
+
     [SerializeField]
     MonoBehaviour factory;
     IFactory Factory { get { return factory as IFactory; } }
@@ -17,7 +19,7 @@ public class OrbManager : MonoBehaviour
         spawnPoints[1] = new Vector3(-21.55f, 1, -5.83f);
         spawnPoints[2] = new Vector3(1.35f, 1, -16.65f);
         spawnPoints[3] = new Vector3(20.15f, 1, -8.2f);
-        InvokeRepeating("Spawn", spawnTime, spawnTime);
+        InvokeRepeating("Spawn", 5, spawnTime);
     }
 
 
@@ -34,5 +36,6 @@ public class OrbManager : MonoBehaviour
         Quaternion rotation = new Quaternion();
 
         GameObject orb = Factory.FactoryMethod(spawnOrb, spawnPoints[spawnPointIndex], rotation);
+        gameOverManager.ShowOrbSpawnWarning();
     }
 }
