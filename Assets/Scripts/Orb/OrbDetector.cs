@@ -6,26 +6,37 @@ public class OrbDetector : MonoBehaviour
 {
 
     GameObject player;
+    PlayerAttributes playerAttributes;
 
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        playerAttributes = player.GetComponent<PlayerAttributes>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject == player && other.isTrigger == false)
         {
-            print("NABRAK ORB");
+            Consume();
         }
 
     }
 
-    private void OnTriggerExit(Collider other)
+    private void Consume()
     {
-        if (other.gameObject == player && other.isTrigger == false)
+        if (gameObject.tag == "PowerOrb")
         {
-            print("KELUAR ORB");
+            playerAttributes.IncreaseAttackModifier();
         }
+        if (gameObject.tag == "AgilityOrb")
+        {
+            playerAttributes.IncreaseSpeedModifier();
+        }
+        if (gameObject.tag == "HealthOrb")
+        {
+            playerAttributes.Heal();
+        }
+        Destroy(gameObject);
     }
 }

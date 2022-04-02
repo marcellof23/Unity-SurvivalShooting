@@ -41,8 +41,8 @@ public class PlayerAttributes : MonoBehaviour
         playerShooting = GetComponentInChildren<PlayerShooting>();
 
         currentHealthModifier = 1F;
-        currentShootingPowerModifier = 10F;
-        currentSpeedModifier = 2F;
+        currentShootingPowerModifier = 1F;
+        currentSpeedModifier = 1F;
 
         currentHealth = startingHealth;
     }
@@ -78,6 +78,21 @@ public class PlayerAttributes : MonoBehaviour
         {
             Death();
         }
+    }
+
+    public void IncreaseAttackModifier()
+    {
+        currentShootingPowerModifier = (float)System.Math.Min(currentShootingPowerModifier + 0.05, maxShootingPowerModifier);
+    }
+
+    public void IncreaseSpeedModifier()
+    {
+        currentSpeedModifier = (float)System.Math.Min(currentSpeedModifier + 0.05, maxSpeedModifier);
+    }
+
+    public void Heal()
+    {
+        currentHealth = (int)System.Math.Min(currentHealth + 20, startingHealth * currentHealthModifier);
     }
 
 
