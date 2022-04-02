@@ -8,6 +8,7 @@ public class PlayerAttributes : MonoBehaviour
 
     public int currentHealth;
 
+    public static int startingHealth = 100;
     public static float maxHealthModifier = 2F;
     public static float maxShootingPowerModifier = 2F;
     public static float maxSpeedModifier = 2F;
@@ -39,8 +40,8 @@ public class PlayerAttributes : MonoBehaviour
 
         playerShooting = GetComponentInChildren<PlayerShooting>();
 
-        currentHealthModifier = 1.1F;
-        currentHealth = 100;
+        currentHealthModifier = 3.1F;
+        currentHealth = startingHealth;
         currentShootingPowerModifier = 2.2F;
         currentSpeedModifier = 2;
     }
@@ -48,6 +49,7 @@ public class PlayerAttributes : MonoBehaviour
 
     void Update()
     {
+        healthSlider.maxValue = startingHealth * currentHealthModifier;
         if (damaged)
         {
             damageImage.color = flashColour;
