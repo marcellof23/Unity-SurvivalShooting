@@ -7262,7 +7262,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerAttributes: {fileID: 747723482}
-  spawnTime: 3
+  spawnTime: 30
   factory: {fileID: 1047706112}
 --- !u!4 &1626391578
 Transform:

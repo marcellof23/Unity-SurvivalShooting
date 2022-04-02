@@ -33,6 +33,6 @@ public class OrbManager : MonoBehaviour
 
         Quaternion rotation = new Quaternion();
 
-        Factory.FactoryMethod(spawnOrb, spawnPoints[spawnPointIndex], rotation);
+        GameObject orb = Factory.FactoryMethod(spawnOrb, spawnPoints[spawnPointIndex], rotation);
     }
 }

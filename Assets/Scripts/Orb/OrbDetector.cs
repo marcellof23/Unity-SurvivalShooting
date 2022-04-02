@@ -12,6 +12,7 @@ public class OrbDetector : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         playerAttributes = player.GetComponent<PlayerAttributes>();
+        Invoke("Despawn", 30);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -37,6 +38,11 @@ public class OrbDetector : MonoBehaviour
         {
             playerAttributes.Heal();
         }
+        Destroy(gameObject);
+    }
+
+    private void Despawn()
+    {
         Destroy(gameObject);
     }
 }
