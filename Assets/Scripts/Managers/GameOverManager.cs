@@ -45,4 +45,10 @@ public class GameOverManager : MonoBehaviour
         warningText.text = "Orb Spawned!";
         anim.SetTrigger("Warning");
     }
+
+    public void ShowBossSpawnWarning()
+    {
+        warningText.text = "Boss Spawned!";
+        anim.SetTrigger("Warning");
+    }
 }

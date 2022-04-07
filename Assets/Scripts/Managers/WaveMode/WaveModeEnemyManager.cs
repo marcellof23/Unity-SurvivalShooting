@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class WaveModeEnemyManager : MonoBehaviour
 {
+    public GameOverManager gameOverManager;
     public WaveModeManager waveManager;
     public PlayerAttributes playerAttributes;
     public GameObject enemy;
@@ -24,6 +25,7 @@ public class WaveModeEnemyManager : MonoBehaviour
         int spawnEnemy = 5;
         waveManager.totalEnemy += 1;
         Factory.FactoryMethod(spawnEnemy, new Vector3(0, 0, 0), Quaternion.identity);
+        gameOverManager.ShowBossSpawnWarning();
     }
 
 
