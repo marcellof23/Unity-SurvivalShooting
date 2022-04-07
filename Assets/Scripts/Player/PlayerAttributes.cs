@@ -5,8 +5,18 @@ using System.Collections;
 
 public class PlayerAttributes : MonoBehaviour
 {
-    public int startingHealth = 100;
+
     public int currentHealth;
+
+    public static int startingHealth = 100;
+    public static float maxHealthModifier = 2F;
+    public static float maxShootingPowerModifier = 2F;
+    public static float maxSpeedModifier = 2F;
+
+    public float currentHealthModifier;
+    public float currentShootingPowerModifier;
+    public float currentSpeedModifier;
+
     public Slider healthSlider;
     public Image damageImage;
     public AudioClip deathClip;
@@ -30,12 +40,17 @@ public class PlayerAttributes : MonoBehaviour
 
         playerShooting = GetComponentInChildren<PlayerShooting>();
 
+        currentHealthModifier = 1F;
+        currentShootingPowerModifier = 1F;
+        currentSpeedModifier = 1F;
+
         currentHealth = startingHealth;
     }
 
 
     void Update()
     {
+        healthSlider.maxValue = startingHealth * currentHealthModifier;
         if (damaged)
         {
             damageImage.color = flashColour;
@@ -49,7 +64,6 @@ public class PlayerAttributes : MonoBehaviour
     }
 
 
-    //Fungsi untuk mendapat damage
     public void TakeDamage(int amount)
     {
         damaged = true;
@@ -64,6 +78,21 @@ public class PlayerAttributes : MonoBehaviour
         {
             Death();
         }
+    }
+
+    public void IncreaseAttackModifier()
+    {
+        currentShootingPowerModifier = (float)System.Math.Min(currentShootingPowerModifier + 0.05, maxShootingPowerModifier);
+    }
+
+    public void IncreaseSpeedModifier()
+    {
+        currentSpeedModifier = (float)System.Math.Min(currentSpeedModifier + 0.05, maxSpeedModifier);
+    }
+
+    public void Heal()
+    {
+        currentHealth = (int)System.Math.Min(currentHealth + 20, startingHealth * currentHealthModifier);
     }
 
 
