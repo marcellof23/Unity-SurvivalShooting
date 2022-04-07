@@ -54,8 +54,11 @@ public class EnemyHealth : MonoBehaviour
             return;
 
         //Play enemy hurt audio
-        enemyAudio.Play();
-
+        if(enemyAudio != null)
+        {
+            enemyAudio.Play();
+        }
+       
         //Kurangi health
         currentHealth -= amount;
 
@@ -73,7 +76,7 @@ public class EnemyHealth : MonoBehaviour
     }
 
 
-    public virtual void Death()
+    public void Death()
     {
         //Set isDead
         isDead = true;
@@ -85,14 +88,15 @@ public class EnemyHealth : MonoBehaviour
         anim.SetTrigger("Dead");
 
         //Play enemy death audio
-        enemyAudio.clip = deathClip;
-        enemyAudio.Play();
-
+        if(enemyAudio != null)
+        {
+            enemyAudio.clip = deathClip;
+            enemyAudio.Play();
+        }
+        
         if(isWaveMode)
         {
             waveManager.enemiesKilled++;
-            print("Enemies Killed : " + waveManager.enemiesKilled);
-            print("Total Enemy : " + waveManager.totalEnemy);
             if (waveManager.enemiesKilled == waveManager.totalEnemy)
             {
                 waveManager.NextWave();
@@ -103,8 +107,13 @@ public class EnemyHealth : MonoBehaviour
 
     public void StartSinking ()
     {
-        //Disable nav mesh component
-        GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = false;
+        //Disable nav mesh component'
+        UnityEngine.AI.NavMeshAgent nav = GetComponent<UnityEngine.AI.NavMeshAgent>();
+
+        if(nav != null)
+        {
+            nav.enabled = false;
+        }
         
         //Set rigidBody ke kinematic
         GetComponent<Rigidbody>().isKinematic = true;

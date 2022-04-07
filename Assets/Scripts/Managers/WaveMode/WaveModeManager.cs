@@ -33,5 +33,6 @@ public class WaveModeManager : MonoBehaviour
         enemiesKilled = 0;
         totalEnemy = 0;
         currentWeight = 0;
+        isBossWave = waveNumber % 3 == 0;
     }
 }

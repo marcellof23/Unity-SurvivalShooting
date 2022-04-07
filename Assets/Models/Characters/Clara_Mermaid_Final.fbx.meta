@@ -1,29 +1,29 @@
 fileFormatVersion: 2
-guid: 73f622e3fdc01844abeafef4547a50a0
+guid: 11406b46b77295f4296d6d436e67de8d
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable:
   - first:
-      74: -3100369314251171874
-    second: Idle
+      74: 6393303701557371470
+    second: Clara_Mermaid|KeyAction
   - first:
-      74: -3704289112126983070
-    second: Shoot
+      74: 7399462096315819049
+    second: Armature|Attacking
   - first:
-      74: 1358262452650834379
-    second: Move
+      74: -3081254936771829754
+    second: Armature|Crying
   - first:
-      74: 8017390324079358001
-    second: Hurt
+      74: -2799005786086568110
+    second: Armature|KeyAction
   - first:
-      74: 4348485665485846014
-    second: Death
+      74: 786504323170427181
+    second: Armature|T-Pose
   externalObjects:
   - first:
-      type: UnityEngine:Texture2D
+      type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Shooter_Robot_Diffuse
-    second: {fileID: 2800000, guid: dc9e7f9f37140f243986fbf721cea49e, type: 3}
+      name: Clara_Marmaid_Mat
+    second: {fileID: 2100000, guid: a1c264f1b3b4d094baba69ddb21652e5, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -52,11 +52,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Idle
-      takeName: Idle
+      name: Clara_Mermaid|KeyAction
+      takeName: Clara_Mermaid|KeyAction
       internalID: 0
-      firstFrame: 1
-      lastFrame: 300
+      firstFrame: 0
+      lastFrame: 1
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -79,13 +79,13 @@ ModelImporter:
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 1
+      additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Shoot
-      takeName: Shoot
+      name: Armature|Attacking
+      takeName: Armature|Attacking
       internalID: 0
-      firstFrame: 300
-      lastFrame: 312
+      firstFrame: 0
+      lastFrame: 45
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -108,13 +108,13 @@ ModelImporter:
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 300
+      additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Move
-      takeName: Move
+      name: Armature|Crying
+      takeName: Armature|Crying
       internalID: 0
-      firstFrame: 313
-      lastFrame: 349
+      firstFrame: 0
+      lastFrame: 100
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -133,17 +133,24 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.25735292
+        functionName: StartSinking
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 313
+      additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Hurt
-      takeName: Hurt
+      name: Armature|KeyAction
+      takeName: Armature|KeyAction
       internalID: 0
-      firstFrame: 350
-      lastFrame: 380
+      firstFrame: 0
+      lastFrame: 1
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -168,11 +175,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Death
-      takeName: Death
+      name: Armature|T-Pose
+      takeName: Armature|T-Pose
       internalID: 0
-      firstFrame: 381
-      lastFrame: 420
+      firstFrame: 0
+      lastFrame: 1
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -191,18 +198,11 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events:
-      - time: 0.32967034
-        functionName: StartSinking
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
+      events: []
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 381
+      additiveReferencePoseFrame: 0
     isReadable: 0
   meshes:
     lODScreenPercentages: []

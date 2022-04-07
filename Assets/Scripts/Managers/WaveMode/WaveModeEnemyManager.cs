@@ -18,6 +18,14 @@ public class WaveModeEnemyManager : MonoBehaviour
         InvokeRepeating("Spawn", spawnTime, spawnTime);
     }
 
+    void SpawnBoss()
+    {
+        //Mendapatkan nilai random untuk spawn point enemy
+        int spawnEnemy = 5;
+        waveManager.totalEnemy += 1;
+        Factory.FactoryMethod(spawnEnemy, new Vector3(0, 0, 0), Quaternion.identity);
+    }
+
 
     void Spawn()
     {
@@ -27,9 +35,15 @@ public class WaveModeEnemyManager : MonoBehaviour
             return;
         }
 
+        if (waveManager.isBossWave)
+        {
+            waveManager.isBossWave = false;
+            SpawnBoss();
+        }
+
         //Mendapatkan nilai random untuk spawn point enemy
         int spawnPointIndex = Random.Range(0, spawnPoints.Length);
-        int spawnEnemy = Random.Range(0, 4);
+        int spawnEnemy = Random.Range(0, 5);
 
         if (spawnEnemy == 0)
         {
@@ -69,7 +83,7 @@ public class WaveModeEnemyManager : MonoBehaviour
             {
                 return;
             }
-        } else
+        } else if (spawnEnemy == 3)
         {
             if (waveManager.currentWeight + 1 <= waveManager.enemySpawnWeight)
             {
@@ -79,6 +93,18 @@ public class WaveModeEnemyManager : MonoBehaviour
                 float y = 0f;
                 float z = Random.Range(-15, 15);
                 Factory.FactoryMethod(spawnEnemy, new Vector3(x, y, z), Quaternion.identity);
+            }
+            else
+            {
+                return;
+            }
+        } else
+        {
+            if (waveManager.currentWeight + 2 <= waveManager.enemySpawnWeight)
+            {
+                waveManager.currentWeight += 2;
+                waveManager.totalEnemy += 1;
+                Factory.FactoryMethod(spawnEnemy, spawnPoints[spawnPointIndex].position, spawnPoints[spawnPointIndex].rotation);
             }
             else
             {
