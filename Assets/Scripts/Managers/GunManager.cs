@@ -6,6 +6,7 @@ public class GunManager : MonoBehaviour
 {
   public PlayerAttributes playerAttributes;
 
+  public ButtonManager buttonManager;
   public PlayerShooting playerShooting;
   public GameObject gunBarrelEnd;
   public float spawnTime = 0.001f;
@@ -35,11 +36,15 @@ public class GunManager : MonoBehaviour
 
   public void DiagonalUpgradeButton()
   {
+    buttonManager.ShowButtonUpgrade();
+    buttonManager.ShowButtonFaster();
     Invoke("SpawnGun", 0.0f);
   }
 
   public void FasterUpgradeButton()
   {
+    buttonManager.ShowButtonUpgrade();
+    buttonManager.ShowButtonFaster();
     playerShooting.setFasterBullet(0.002f);
   }
 

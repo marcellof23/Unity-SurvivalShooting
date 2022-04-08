@@ -6,52 +6,52 @@ using TMPro;
 
 public class MainMenu : MonoBehaviour
 {
-    public GameObject inputField; 
+  public GameObject inputField;
 
-    void Awake()
-    {
-        PlayerPrefs.SetString("name", "");
-        inputField.SetActive(false);
-    }
+  void Awake()
+  {
+    PlayerPrefs.SetString("name", "player");
+    inputField.SetActive(false);
+  }
 
-    public void ChangeName()
-    {
-        string text = inputField.GetComponent<TMP_InputField>().text;
-        PlayerPrefs.SetString("name", text);
-        string name = PlayerPrefs.GetString("name");
+  public void ChangeName()
+  {
+    string text = inputField.GetComponent<TMP_InputField>().text;
+    PlayerPrefs.SetString("name", text);
+    string name = PlayerPrefs.GetString("name");
 
-        inputField.SetActive(false);
-        gameObject.SetActive(true);
-    }
+    inputField.SetActive(false);
+    gameObject.SetActive(true);
+  }
 
-    public void ShowInputName()
-    {
-        gameObject.SetActive(false);
-        inputField.SetActive(true);
-    }
+  public void ShowInputName()
+  {
+    gameObject.SetActive(false);
+    inputField.SetActive(true);
+  }
 
-    public void PlayWef()
-    {
-        SceneManager.LoadScene("Wave_Mode");
-    }
+  public void PlayWef()
+  {
+    SceneManager.LoadScene("Wave_Mode");
+  }
 
-    public void PlayZen()
-    {
-        SceneManager.LoadScene("Zen_Mode");
-    }
+  public void PlayZen()
+  {
+    SceneManager.LoadScene("Zen_Mode");
+  }
 
-    public void OpenLeaderBoard()
-    {
-        SceneManager.LoadScene("Scoreboard");
-    }
+  public void OpenLeaderBoard()
+  {
+    SceneManager.LoadScene("Scoreboard");
+  }
 
-    public void Return()
-    {
-        SceneManager.LoadScene("Main_Menu");
-    }
+  public void Return()
+  {
+    SceneManager.LoadScene("Main_Menu");
+  }
 
-    public void QuitGame()
-    {
-        Application.Quit();
-    }
+  public void QuitGame()
+  {
+    Application.Quit();
+  }
 }
