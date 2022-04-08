@@ -5,7 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public void PlayGame()
+
+    public void PlayWef()
+    {
+        SceneManager.LoadScene("Wave_Mode");
+    }
+
+    public void PlayZen()
     {
         SceneManager.LoadScene("Zen_Mode");
     }
