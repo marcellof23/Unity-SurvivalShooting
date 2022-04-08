@@ -11,6 +11,8 @@ TagManager:
   - HealthOrb
   - PowerOrb
   - GunBarrelEnd
+  - ButtonUpgradeDiagonal
+  - ButtonUpgradeFaster
   layers:
   - Default
   - TransparentFX

@@ -1003,6 +1003,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 605ebb07f7c723b4b9cea937c55475d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonManager: {fileID: 338260630}
   waveNumber: 0
   enemySpawnWeight: 0
   totalEnemy: 0
@@ -8143,6 +8144,10 @@ PrefabInstance:
       propertyPath: gunBarrelEnd
       value: 
       objectReference: {fileID: 769116548}
+    - target: {fileID: 4233864536067600916, guid: 2650ce4498a60bb3498ffad06f13164a, type: 3}
+      propertyPath: buttonManager
+      value: 
+      objectReference: {fileID: 338260630}
     - target: {fileID: 4233864536067600916, guid: 2650ce4498a60bb3498ffad06f13164a, type: 3}
       propertyPath: playerShooting
       value: 
