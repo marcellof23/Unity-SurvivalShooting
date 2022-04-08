@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Main_Menu.unity
     guid: 6e06e528c1230c9418f83a534ab89289
   - enabled: 1
-    path: Assets/Scenes/Level_01.unity
+    path: Assets/Scenes/Zen_Mode.unity
     guid: a9ea395f10ab2884c8cc90e39656acb1
   - enabled: 1
     path: Assets/Scenes/Wave_Mode.unity
