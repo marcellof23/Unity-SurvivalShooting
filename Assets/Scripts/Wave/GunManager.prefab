@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4233864536067600915
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4233864536067600917}
+  - component: {fileID: 4233864536067600916}
+  m_Layer: 0
+  m_Name: GunManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4233864536067600917
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4233864536067600915}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 606, y: 261.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4233864536067600916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4233864536067600915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 562598b4e526ab5ce852a826e9a576e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerAttributes: {fileID: 8736368431532320484, guid: 2c9594d0e6d56ceb596a19af45efb3bb, type: 3}
+  playerShooting: {fileID: 2970078300818579056, guid: b1e2380dbf42b51e5946f4bb8ef5f95c, type: 3}
+  gunBarrelEnd: {fileID: 2970078300818579058, guid: b1e2380dbf42b51e5946f4bb8ef5f95c, type: 3}
+  spawnTime: 100
+  repeatTime: 100
+  spawnPoints:
+  - {fileID: 6755849287199023280, guid: 4a1914872298b28a0a9cc656fd25386c, type: 3}
+  gunBarrel: []
+  factory: {fileID: 8294316223920459655, guid: 3e61b63df9d2584759db69688c668549, type: 3}

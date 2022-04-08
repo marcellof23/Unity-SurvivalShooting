@@ -4,7 +4,7 @@ public class PlayerShooting : MonoBehaviour
 {
   public int damagePerShot = 20;
   public float timeBetweenBullets = 0.15f;
-  public float range = 100f;
+  public float range = 15f;
 
   float timer;
   Ray shootRay;
@@ -56,7 +56,12 @@ public class PlayerShooting : MonoBehaviour
 
   public void setFasterBullet(float time)
   {
-    timeBetweenBullets -= time;
+    this.timeBetweenBullets -= time;
+  }
+
+  public void setLongerRange(float range)
+  {
+    this.range += range;
   }
 
   void Shoot()
@@ -80,6 +85,7 @@ public class PlayerShooting : MonoBehaviour
     //Set posisi ray shoot dan direction
     shootRay.origin = transform.position;
     shootRay.direction = transform.forward;
+
 
     //Lakukan raycast jika mendeteksi id enemy hit apapun
     if (Physics.Raycast(shootRay, out shootHit, range, shootableMask))

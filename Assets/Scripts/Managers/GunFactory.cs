@@ -23,47 +23,28 @@ public class GunFactory : MonoBehaviour, IFactory
     int gunIdx = 0;
     Transform t = player.transform;
 
-    float initAngle = 15f;
+    float initAngle = 0f;
     foreach (Transform tr in t)
     {
       if (tr.tag == "GunBarrelEnd")
       {
-        if (gunIdx % 2 == 0 && gunIdx >= 1)
+        tr.rotation = mainGun.transform.rotation;
+        if (gunIdx >= 1)
         {
-          tr.rotation *= Quaternion.Euler(0, -initAngle * ((gunIdx - 1) / 2 + 1), 0);
-        }
-        else
-        {
-          tr.rotation *= Quaternion.Euler(0, initAngle * ((gunIdx - 1) / 2 + 1), 0);
+          if (gunIdx % 2 == 1)
+          {
+            initAngle += 20f;
+            tr.rotation *= Quaternion.Euler(0, -initAngle, 0);
+          }
+          else
+          {
+            tr.rotation *= Quaternion.Euler(0, +initAngle, 0);
+          }
         }
         gunIdx += 1;
       }
     }
 
-    // foreach (Transform tr in t)
-    // {
-    //   if (tr.tag == "GunBarrelEnd")
-    //   {
-    //     tr.rotation = mainGun.transform.rotation;
-    //     if (gunIdx == 1)
-    //     {
-    //       tr.rotation *= Quaternion.Euler(0, -20.0f, 0);
-    //     }
-    //     else if (gunIdx == 2)
-    //     {
-    //       tr.rotation *= Quaternion.Euler(0, +20.0f, 0);
-    //     }
-    //     else if (gunIdx == 3)
-    //     {
-    //       tr.rotation *= Quaternion.Euler(0, -40.0f, 0);
-    //     }
-    //     else if (gunIdx == 4)
-    //     {
-    //       tr.rotation *= Quaternion.Euler(0, +40.0f, 0);
-    //     }
-    //     gunIdx += 1;
-    //   }
-    // }
     return gunBarrelEnd;
   }
 }
