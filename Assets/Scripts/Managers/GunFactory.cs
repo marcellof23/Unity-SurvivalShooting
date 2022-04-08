@@ -20,33 +20,50 @@ public class GunFactory : MonoBehaviour, IFactory
     GameObject gunBarrelEnd2 = Instantiate(gunBarrel[tag], mainGun.transform.position, mainGun.transform.rotation);
     gunBarrelEnd2.transform.SetParent(player.transform);
 
-    int cnt = 0;
+    int gunIdx = 0;
     Transform t = player.transform;
 
+    float initAngle = 15f;
     foreach (Transform tr in t)
     {
       if (tr.tag == "GunBarrelEnd")
       {
-        tr.rotation = mainGun.transform.rotation;
-        if (cnt == 1)
+        if (gunIdx % 2 == 0 && gunIdx >= 1)
         {
-          tr.rotation *= Quaternion.Euler(0, -20.0f, 0);
+          tr.rotation *= Quaternion.Euler(0, -initAngle * ((gunIdx - 1) / 2 + 1), 0);
         }
-        else if (cnt == 2)
+        else
         {
-          tr.rotation *= Quaternion.Euler(0, +20.0f, 0);
+          tr.rotation *= Quaternion.Euler(0, initAngle * ((gunIdx - 1) / 2 + 1), 0);
         }
-        else if (cnt == 3)
-        {
-          tr.rotation *= Quaternion.Euler(0, -40.0f, 0);
-        }
-        else if (cnt == 4)
-        {
-          tr.rotation *= Quaternion.Euler(0, +40.0f, 0);
-        }
-        cnt += 1;
+        gunIdx += 1;
       }
     }
+
+    // foreach (Transform tr in t)
+    // {
+    //   if (tr.tag == "GunBarrelEnd")
+    //   {
+    //     tr.rotation = mainGun.transform.rotation;
+    //     if (gunIdx == 1)
+    //     {
+    //       tr.rotation *= Quaternion.Euler(0, -20.0f, 0);
+    //     }
+    //     else if (gunIdx == 2)
+    //     {
+    //       tr.rotation *= Quaternion.Euler(0, +20.0f, 0);
+    //     }
+    //     else if (gunIdx == 3)
+    //     {
+    //       tr.rotation *= Quaternion.Euler(0, -40.0f, 0);
+    //     }
+    //     else if (gunIdx == 4)
+    //     {
+    //       tr.rotation *= Quaternion.Euler(0, +40.0f, 0);
+    //     }
+    //     gunIdx += 1;
+    //   }
+    // }
     return gunBarrelEnd;
   }
 }

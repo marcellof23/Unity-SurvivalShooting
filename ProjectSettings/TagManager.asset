@@ -10,6 +10,7 @@ TagManager:
   - AgilityOrb
   - HealthOrb
   - PowerOrb
+  - GunBarrelEnd
   layers:
   - Default
   - TransparentFX
