@@ -93,6 +93,7 @@ public class PlayerAttributes : MonoBehaviour
     public void Heal()
     {
         currentHealth = (int)System.Math.Min(currentHealth + 20, startingHealth * currentHealthModifier);
+        healthSlider.value = currentHealth;
     }
 
 
