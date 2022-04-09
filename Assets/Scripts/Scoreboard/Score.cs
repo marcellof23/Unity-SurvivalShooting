@@ -12,4 +12,14 @@ public class Score : MonoBehaviour
     this.name = name;
     this.score = score;
   }
+
+  public string getName()
+  {
+    return this.name;
+  }
+
+  public float getScore()
+  {
+    return this.score;
+  }
 }

@@ -9,7 +9,7 @@ public class TimerManager : MonoBehaviour
   public static float survivalTime;
 
   Text text;
-
+  float time, timeDelay;
   private void Awake()
   {
     text = GetComponent<Text>();
@@ -19,15 +19,22 @@ public class TimerManager : MonoBehaviour
   // Update is called once per frame
   void Update()
   {
+    time = time + 1f * Time.deltaTime;
     if (playerAttributes.currentHealth > 0)
     {
+      time = 0f;
+      timeDelay = 2f;
       survivalTime += Time.deltaTime;
       text.text = GetMinute() + ":" + GetSeconds();
     }
     else
     {
       text.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
-      text.text = "Survival time : " + GetMinute() + ":" + GetSeconds();
+      text.text = "";
+      if (time >= timeDelay)
+      {
+        text.text = "Survival time : " + GetMinute() + ":" + GetSeconds();
+      }
     }
   }
 

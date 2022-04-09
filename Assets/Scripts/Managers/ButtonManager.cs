@@ -18,8 +18,8 @@ public class ButtonManager : MonoBehaviour
     Scene scene = SceneManager.GetActiveScene();
     if (scene.name == "Zen_Mode")
     {
-      int spawnTime = 30;
-      int repeatTime = 50;
+      int spawnTime = 5;
+      int repeatTime = 10;
       InvokeRepeating("ShowButtonUpgrade", spawnTime, repeatTime);
       InvokeRepeating("ShowButtonFaster", spawnTime, repeatTime);
       InvokeRepeating("ShowButtonRange", spawnTime, repeatTime);
@@ -36,7 +36,7 @@ public class ButtonManager : MonoBehaviour
   {
     Scene scene = SceneManager.GetActiveScene();
 
-    if (ButtonDiagonalUpgrade.active)
+    if (ButtonDiagonalUpgrade.activeSelf)
     {
       ButtonDiagonalUpgrade.SetActive(false);
     }
@@ -49,7 +49,7 @@ public class ButtonManager : MonoBehaviour
   public void ShowButtonFaster()
   {
     Scene scene = SceneManager.GetActiveScene();
-    if (ButtonFasterUpgrade.active)
+    if (ButtonFasterUpgrade.activeSelf)
     {
       ButtonFasterUpgrade.SetActive(false);
     }
@@ -62,7 +62,7 @@ public class ButtonManager : MonoBehaviour
   public void ShowButtonRange()
   {
     Scene scene = SceneManager.GetActiveScene();
-    if (ButtonRangeUpgrade.active)
+    if (ButtonRangeUpgrade.activeSelf)
     {
       ButtonRangeUpgrade.SetActive(false);
     }
