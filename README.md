@@ -41,11 +41,11 @@ Di dalam game ini juga terdapat beberapa mobs, yaitu :
 
 5. Weapon Upgrade
 
-    Untuk fitur weapon upgrade,
+    Untuk fitur weapon upgrade, kami mengimplementasikan 3 upgrade. Yang pertama terdapat diagonal upgrade, pada diagonal upgrade kami membuat penambahan 2 laser pada kanan dan kiri laser utama dengan perbedaan sudut 15 derajat. Lalu untuk setiap upgradenya, akan bertambah 2 terus menerus. Selanjutnya terdapat upgrade kecepatan tembakan,  setiap pemain mengambil upgrade terssebut, maka projectile speed dari laser akan berkurang hingga 0.02. Terakhir adalah upgrade untuk menambah range tembakan, setiap upgrade yang dilakukan, maka jarak tembakan pemain akan bertambah sebanyak 2 float satuan pada game.
 
 6. Local Scoreboard
 
-    Untuk fitur local scoreboard, kami membuat scene baru yang berfungsi untuk menampilkan skor dari pemain untuk setiap game mode.
+    Untuk fitur local scoreboard, kami membuat scene baru yang berfungsi untuk menampilkan skor dari pemain untuk setiap game mode. Untuk masing-masing mode, yaitu Zen mode dan juga Wave mode, kami membuat masing-masing sebanyak 1 scene. Kami membuat masing-masing 5 file script yaitu RowUI, Score, ScoreUI, ScoreManager, dan ScoreData. RowUI berfungsi untuk menyediakan model dari kolom mode yang ditampilkan pada UI. Lalu ScoreData berfungsi untuk membuat kelas yang menampung list dari row scoreboard. Selanjutnya terdapat score yang merupakan file ynag menampung kelas entitas dari ScoreData, Lalu juga terdapat ScoreManager yang berfungsi untuk menambah, menyimpan data, dan mengurutkan data. Terakhir terdapat scoreUI yang merupakan file yang berisi fungsi untuk mengisi data setiap row dan dimasukkan kedalam UI pada game.
 
 7. Main Menu
 
