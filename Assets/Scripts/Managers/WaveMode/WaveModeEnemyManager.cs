@@ -40,9 +40,14 @@ public class WaveModeEnemyManager : MonoBehaviour
 
     if (waveManager.isBossWave)
     {
-      buttonManager.triggerUpgradeButton();
       waveManager.isBossWave = false;
       SpawnBoss();
+    }
+
+    if (waveManager.isAfterBossWave)
+    {
+        waveManager.isAfterBossWave = false;
+        buttonManager.triggerUpgradeButton();
     }
 
     //Mendapatkan nilai random untuk spawn point enemy

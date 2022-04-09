@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.45061475, g: 0.49860835, b: 0.56437474, a: 1}
+  m_IndirectSpecularColor: {r: 0.4506148, g: 0.49860865, b: 0.56437486, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1092,6 +1092,7 @@ MonoBehaviour:
   enemiesKilled: 0
   currentWeight: 0
   isBossWave: 0
+  isAfterBossWave: 0
 --- !u!114 &477369911
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -20,4 +20,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Wave_Scoreboard.unity
     guid: 61ff3f5933cc0598e8c92bf465c758ff
+  - enabled: 1
+    path: Assets/Scenes/Game_Over_Zen.unity
+    guid: 29ad6e5d859baee42ae5afbf06490b72
+  - enabled: 1
+    path: Assets/Scenes/Game_Over_Wave.unity
+    guid: 464d154bb92616f46b657fa4ac2689e5
   m_configObjects: {}

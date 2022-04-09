@@ -11,6 +11,7 @@ public class WaveModeManager : MonoBehaviour
   public int enemiesKilled = 0;
   public int currentWeight = 0;
   public bool isBossWave = false;
+  public bool isAfterBossWave = false;
 
   void Start()
   {
@@ -35,5 +36,6 @@ public class WaveModeManager : MonoBehaviour
     totalEnemy = 0;
     currentWeight = 0;
     isBossWave = waveNumber % 3 == 0;
+    isAfterBossWave = waveNumber > 1 && waveNumber % 3 == 1;
   }
 }

@@ -117,22 +117,28 @@ public class PlayerAttributes : MonoBehaviour
     Scene scene = SceneManager.GetActiveScene();
     if (scene.name == "Zen_Mode")
     {
+      PlayerPrefs.SetInt("zen_time", (int)TimerManager.survivalTime);
+
       Score playerScore = new Score(playerName, (int)TimerManager.survivalTime);
       scoreManagers.AddScore(playerScore);
 
       var json = JsonUtility.ToJson(scoreManagers.sd);
       PlayerPrefs.SetString("scores_zen", json);
+
+      SceneManager.LoadScene("Game_Over_Zen");
     }
     else if (scene.name == "Wave_Mode")
     {
-      Debug.Log(waveModeManager.waveNumber);
-      Debug.Log(WaveModeScoreManager.score);
-      Debug.Log("ANJING");
+      PlayerPrefs.SetInt("wave_count", waveModeManager.waveNumber);
+      PlayerPrefs.SetInt("wave_score", WaveModeScoreManager.score);
+
       ScoreWave playerScore = new ScoreWave(playerName, waveModeManager.waveNumber, WaveModeScoreManager.score);
       scoreWaveManagers.AddScore(playerScore);
 
       var json = JsonUtility.ToJson(scoreWaveManagers.sd);
       PlayerPrefs.SetString("scores_wave", json);
+
+      SceneManager.LoadScene("Game_Over_Wave");
     }
 
     playerShooting.DisableEffects();
