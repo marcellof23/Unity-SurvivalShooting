@@ -112,11 +112,11 @@ public class PlayerAttributes : MonoBehaviour
 
     Score playerScore = new Score(playerName, scoreManager.getScore());
     scoreManagers.AddScore(playerScore);
+
     var json = JsonUtility.ToJson(scoreManagers.sd);
     PlayerPrefs.SetString("scores_zen", json);
-    //scoreManagers.SaveScore();
+
     Debug.Log(PlayerPrefs.GetString("scores_zen"));
-    //scoreManagersss.AddScore(playerScore);
 
     playerShooting.DisableEffects();
 

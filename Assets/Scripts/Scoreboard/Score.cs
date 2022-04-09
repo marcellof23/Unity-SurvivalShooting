@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 
 [Serializable]
-public class Score : MonoBehaviour
+public class Score
 {
   public string name;
   public int score;
@@ -15,11 +15,11 @@ public class Score : MonoBehaviour
 
   public string getName()
   {
-    return this.name;
+    return name;
   }
 
   public int getScore()
   {
-    return this.score;
+    return score;
   }
 }
