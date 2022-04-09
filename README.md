@@ -66,3 +66,10 @@ Dalam pengerjaan tugas besar ini, kami tidak menggunakan library eksternal, kami
 3. ![Wave Mode](/Screenshots/WaveMode.png "Wave Mode")
 4. ![Zen Mode](/Screenshots/ZenMode.png "Zen Mode")
 
+## Pembagian Tugas
+
+| NIM | Nama | Tugas | 
+| :---: | :---: | :---: | 
+| 13519059 | Denilsen Axel Candiasa| Additional Mobs, Wave Mode, Main Menu, Game Over |
+| 13519079 | Jesson Gossal Yo | Attribute Player, Orbs, Zen Mode |
+| 13519086 | Marcello Faria | Weapon Upgrade, Local Scoreboard, Game Over, Bonus Weapon Upgrade|
