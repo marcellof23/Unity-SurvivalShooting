@@ -2,9 +2,10 @@
 
 public class PlayerShooting : MonoBehaviour
 {
+  public ButtonManager buttonManager;
   public int damagePerShot = 20;
   public float timeBetweenBullets = 0.15f;
-  public float range = 15f;
+  public float range = 10f;
 
   float timer;
   Ray shootRay;
@@ -59,8 +60,9 @@ public class PlayerShooting : MonoBehaviour
     this.timeBetweenBullets -= time;
   }
 
-  public void setLongerRange(float range)
+  public void setRangeShoot(float range)
   {
+    buttonManager.triggerUpgradeButton();
     this.range += range;
   }
 

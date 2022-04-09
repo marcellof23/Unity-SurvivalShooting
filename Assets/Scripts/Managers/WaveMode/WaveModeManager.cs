@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WaveModeManager : MonoBehaviour
 {
-  public ButtonManager buttonManager;
+
   public int waveNumber = 0;
   public int enemySpawnWeight = 0;
   public int totalEnemy = 0;
@@ -29,8 +29,6 @@ public class WaveModeManager : MonoBehaviour
 
   public void NextWave()
   {
-    buttonManager.ShowButtonUpgrade();
-    buttonManager.ShowButtonFaster();
     waveNumber++;
     enemySpawnWeight += 2;
     enemiesKilled = 0;

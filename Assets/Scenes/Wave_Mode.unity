@@ -269,6 +269,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 831765923}
     m_Modifications:
+    - target: {fileID: 3609547884101793509, guid: 78f5f2366a0efbcfaa765612bc4528f4, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 32b597663cdd6afcf95d3fa6c2f07935, type: 3}
     - target: {fileID: 3609547884101793510, guid: 78f5f2366a0efbcfaa765612bc4528f4, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -335,7 +339,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3609547884101793510, guid: 78f5f2366a0efbcfaa765612bc4528f4, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -40
+      value: -80
       objectReference: {fileID: 0}
     - target: {fileID: 3609547884101793510, guid: 78f5f2366a0efbcfaa765612bc4528f4, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -800,6 +804,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ButtonDiagonalUpgrade: {fileID: 1718709776}
   ButtonFasterUpgrade: {fileID: 975731837}
+  ButtonRangeUpgrade: {fileID: 368203348}
 --- !u!4 &338260631
 Transform:
   m_ObjectHideFlags: 0
@@ -814,6 +819,81 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &368203348
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 368203349}
+  - component: {fileID: 368203351}
+  - component: {fileID: 368203350}
+  m_Layer: 5
+  m_Name: AttackRangeButton
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &368203349
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 368203348}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 831765923}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 80, y: 50}
+  m_SizeDelta: {x: 50, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &368203350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 368203348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: e36eb9ffbc47a260cb40382ffeb96891, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &368203351
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 368203348}
+  m_CullTransparentMesh: 1
 --- !u!1 &429387777
 GameObject:
   m_ObjectHideFlags: 0
@@ -929,6 +1009,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22cf943db2b53684fa4d900ee1860658, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonManager: {fileID: 338260630}
   gameOverManager: {fileID: 831765924}
   waveManager: {fileID: 477369910}
   playerAttributes: {fileID: 743519653}
@@ -949,6 +1030,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22cf943db2b53684fa4d900ee1860658, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonManager: {fileID: 338260630}
   gameOverManager: {fileID: 831765924}
   waveManager: {fileID: 477369910}
   playerAttributes: {fileID: 743519653}
@@ -969,6 +1051,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22cf943db2b53684fa4d900ee1860658, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonManager: {fileID: 338260630}
   gameOverManager: {fileID: 831765924}
   waveManager: {fileID: 477369910}
   playerAttributes: {fileID: 743519653}
@@ -1003,7 +1086,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 605ebb07f7c723b4b9cea937c55475d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonManager: {fileID: 338260630}
   waveNumber: 0
   enemySpawnWeight: 0
   totalEnemy: 0
@@ -1034,6 +1116,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22cf943db2b53684fa4d900ee1860658, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonManager: {fileID: 338260630}
   gameOverManager: {fileID: 831765924}
   waveManager: {fileID: 477369910}
   playerAttributes: {fileID: 743519653}
@@ -1054,6 +1137,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22cf943db2b53684fa4d900ee1860658, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonManager: {fileID: 338260630}
   gameOverManager: {fileID: 831765924}
   waveManager: {fileID: 477369910}
   playerAttributes: {fileID: 743519653}
@@ -1074,6 +1158,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22cf943db2b53684fa4d900ee1860658, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonManager: {fileID: 338260630}
   gameOverManager: {fileID: 831765924}
   waveManager: {fileID: 477369910}
   playerAttributes: {fileID: 743519653}
@@ -1634,9 +1719,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27c63be2a8918c741863160b9d9da122, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonManager: {fileID: 338260630}
   damagePerShot: 20
   timeBetweenBullets: 0.15
-  range: 100
+  range: 10
   playerAttributes: {fileID: 743519653}
 --- !u!199 &769116551
 ParticleSystemRenderer:
@@ -6780,6 +6866,7 @@ RectTransform:
   - {fileID: 8709382}
   - {fileID: 41778615}
   - {fileID: 979619719}
+  - {fileID: 368203349}
   - {fileID: 1734705139}
   m_Father: {fileID: 0}
   m_RootOrder: 6
@@ -6979,6 +7066,10 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: FasterUpgradeButton
       objectReference: {fileID: 0}
+    - target: {fileID: 6221549539328772019, guid: bde414425dc6e296b96512537444c32b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 7f42c09313385dc63becb968c646feba, type: 3}
     - target: {fileID: 6221549539328772028, guid: bde414425dc6e296b96512537444c32b, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -7045,7 +7136,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6221549539328772028, guid: bde414425dc6e296b96512537444c32b, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 40
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6221549539328772028, guid: bde414425dc6e296b96512537444c32b, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -7900,7 +7991,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4711784431200975290, guid: d884b830cff481448b57f3e3eae67f43, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4711784431200975290, guid: d884b830cff481448b57f3e3eae67f43, type: 3}
       propertyPath: m_AnchorMax.x
@@ -7956,11 +8047,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4711784431200975290, guid: d884b830cff481448b57f3e3eae67f43, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 20
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 4711784431200975290, guid: d884b830cff481448b57f3e3eae67f43, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -20
+      value: -50
       objectReference: {fileID: 0}
     - target: {fileID: 4711784431200975290, guid: d884b830cff481448b57f3e3eae67f43, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

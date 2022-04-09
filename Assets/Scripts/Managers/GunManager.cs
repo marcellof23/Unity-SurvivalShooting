@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class GunManager : MonoBehaviour
 {
   public PlayerAttributes playerAttributes;
@@ -19,32 +19,15 @@ public class GunManager : MonoBehaviour
   MonoBehaviour factory;
   IFactory Factory { get { return factory as IFactory; } }
 
-  void Start()
-  {
-    //Mengeksekusi perintah spawn dengan interval spawnTime
-    InvokeRepeating("SpawnGun", spawnTime, repeatTime);
-  }
-
-
-  void Update()
-  {
-    if (Input.GetKeyDown(KeyCode.E))
-    {
-      InvokeRepeating("SpawnGun", spawnTime, repeatTime);
-    }
-  }
-
   public void DiagonalUpgradeButton()
   {
-    buttonManager.ShowButtonUpgrade();
-    buttonManager.ShowButtonFaster();
+    buttonManager.triggerUpgradeButton();
     Invoke("SpawnGun", 0.0f);
   }
 
   public void FasterUpgradeButton()
   {
-    buttonManager.ShowButtonUpgrade();
-    buttonManager.ShowButtonFaster();
+    buttonManager.triggerUpgradeButton();
     playerShooting.setFasterBullet(0.002f);
   }
 
