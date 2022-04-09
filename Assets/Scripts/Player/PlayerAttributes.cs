@@ -1,119 +1,134 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
+using System;
 using System.Collections;
-
+using System.Collections.Generic;
+using System.Linq;
 public class PlayerAttributes : MonoBehaviour
 {
 
-    public int currentHealth;
+  public ScoreManagers scoreManagers;
 
-    public static int startingHealth = 100;
-    public static float maxHealthModifier = 2F;
-    public static float maxShootingPowerModifier = 2F;
-    public static float maxSpeedModifier = 2F;
+  public ScoreManager scoreManager;
+  public int currentHealth;
 
-    public float currentHealthModifier;
-    public float currentShootingPowerModifier;
-    public float currentSpeedModifier;
+  public static int startingHealth = 100;
+  public static float maxHealthModifier = 2F;
+  public static float maxShootingPowerModifier = 2F;
+  public static float maxSpeedModifier = 2F;
 
-    public Slider healthSlider;
-    public Image damageImage;
-    public AudioClip deathClip;
-    public float flashSpeed = 5f;
-    public Color flashColour = new Color(1f, 0f, 0f, 0.1f);
+  public float currentHealthModifier;
+  public float currentShootingPowerModifier;
+  public float currentSpeedModifier;
 
-
-    Animator anim;
-    AudioSource playerAudio;
-    PlayerMovement playerMovement;
-    PlayerShooting playerShooting;
-    bool isDead;                                                
-    bool damaged;                                               
+  public Slider healthSlider;
+  public Image damageImage;
+  public AudioClip deathClip;
+  public float flashSpeed = 5f;
+  public Color flashColour = new Color(1f, 0f, 0f, 0.1f);
 
 
-    void Awake()
+  Animator anim;
+  AudioSource playerAudio;
+  PlayerMovement playerMovement;
+  PlayerShooting playerShooting;
+  bool isDead;
+  bool damaged;
+
+
+  void Awake()
+  {
+    anim = GetComponent<Animator>();
+    playerAudio = GetComponent<AudioSource>();
+    playerMovement = GetComponent<PlayerMovement>();
+
+    playerShooting = GetComponentInChildren<PlayerShooting>();
+
+    currentHealthModifier = 1F;
+    currentShootingPowerModifier = 1F;
+    currentSpeedModifier = 1F;
+
+    currentHealth = startingHealth;
+  }
+
+
+  void Update()
+  {
+    healthSlider.maxValue = startingHealth * currentHealthModifier;
+    if (damaged)
     {
-        anim = GetComponent<Animator>();
-        playerAudio = GetComponent<AudioSource>();
-        playerMovement = GetComponent<PlayerMovement>();
-
-        playerShooting = GetComponentInChildren<PlayerShooting>();
-
-        currentHealthModifier = 1F;
-        currentShootingPowerModifier = 1F;
-        currentSpeedModifier = 1F;
-
-        currentHealth = startingHealth;
+      damageImage.color = flashColour;
+    }
+    else
+    {
+      damageImage.color = Color.Lerp(damageImage.color, Color.clear, flashSpeed * Time.deltaTime);
     }
 
+    damaged = false;
+  }
 
-    void Update()
+
+  public void TakeDamage(int amount)
+  {
+    damaged = true;
+
+    currentHealth -= amount;
+
+    healthSlider.value = currentHealth;
+
+    playerAudio.Play();
+
+    if (currentHealth <= 0 && !isDead)
     {
-        healthSlider.maxValue = startingHealth * currentHealthModifier;
-        if (damaged)
-        {
-            damageImage.color = flashColour;
-        }
-        else
-        {
-            damageImage.color = Color.Lerp(damageImage.color, Color.clear, flashSpeed * Time.deltaTime);
-        }
-
-        damaged = false;
+      Death();
     }
+  }
+
+  public void IncreaseAttackModifier()
+  {
+    currentShootingPowerModifier = (float)System.Math.Min(currentShootingPowerModifier + 0.05, maxShootingPowerModifier);
+  }
+
+  public void IncreaseSpeedModifier()
+  {
+    currentSpeedModifier = (float)System.Math.Min(currentSpeedModifier + 0.05, maxSpeedModifier);
+  }
+
+  public void Heal()
+  {
+    currentHealth = (int)System.Math.Min(currentHealth + 20, startingHealth * currentHealthModifier);
+    healthSlider.value = currentHealth;
+  }
 
 
-    public void TakeDamage(int amount)
-    {
-        damaged = true;
+  void Death()
+  {
+    isDead = true;
 
-        currentHealth -= amount;
+    var playerName = PlayerPrefs.GetString("name");
 
-        healthSlider.value = currentHealth;
+    Score playerScore = new Score(playerName, scoreManager.getScore());
+    PlayerPrefs.SetString("scores", JsonUtility.ToJson(playerScore));
+    // Debug.Log(playerName);
+    // Debug.Log(scoreManager.getScore().ToString());
+    //GameObject scoreManagerss = GameObject.FindGameObjectWithTag("ScoreManagers");
+    // scoreManagers.AddScore(new Score(playerName, scoreManager.getScore()));
 
-        playerAudio.Play();
+    playerShooting.DisableEffects();
 
-        if (currentHealth <= 0 && !isDead)
-        {
-            Death();
-        }
-    }
+    anim.SetTrigger("Die");
 
-    public void IncreaseAttackModifier()
-    {
-        currentShootingPowerModifier = (float)System.Math.Min(currentShootingPowerModifier + 0.05, maxShootingPowerModifier);
-    }
+    playerAudio.clip = deathClip;
+    playerAudio.Play();
 
-    public void IncreaseSpeedModifier()
-    {
-        currentSpeedModifier = (float)System.Math.Min(currentSpeedModifier + 0.05, maxSpeedModifier);
-    }
+    playerMovement.enabled = false;
+    playerShooting.enabled = false;
+  }
 
-    public void Heal()
-    {
-        currentHealth = (int)System.Math.Min(currentHealth + 20, startingHealth * currentHealthModifier);
-        healthSlider.value = currentHealth;
-    }
-
-
-    void Death()
-    {
-        isDead = true;
-
-        playerShooting.DisableEffects();
-
-        anim.SetTrigger("Die");
-
-        playerAudio.clip = deathClip;
-        playerAudio.Play();
-
-        playerMovement.enabled = false;
-        playerShooting.enabled = false;
-    }
-
-    public void RestartLevel ()
-    {
-        SceneManager.LoadScene(0);
-    }
+  public void RestartLevel()
+  {
+    SceneManager.LoadScene(0);
+  }
 }

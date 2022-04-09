@@ -18,14 +18,13 @@ public class ButtonManager : MonoBehaviour
     Scene scene = SceneManager.GetActiveScene();
     if (scene.name == "Zen_Mode")
     {
-      int spawnTime = 5;
-      int repeatTime = 10;
+      int spawnTime = 30;
+      int repeatTime = 50;
       InvokeRepeating("ShowButtonUpgrade", spawnTime, repeatTime);
       InvokeRepeating("ShowButtonFaster", spawnTime, repeatTime);
       InvokeRepeating("ShowButtonRange", spawnTime, repeatTime);
     }
   }
-
   public void triggerUpgradeButton()
   {
     ShowButtonUpgrade();

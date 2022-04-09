@@ -13,6 +13,8 @@ TagManager:
   - GunBarrelEnd
   - ButtonUpgradeDiagonal
   - ButtonUpgradeFaster
+  - InputField
+  - ScoreManagers
   layers:
   - Default
   - TransparentFX

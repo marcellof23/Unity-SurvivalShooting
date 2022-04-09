@@ -42,7 +42,7 @@ public class MainMenu : MonoBehaviour
 
   public void OpenLeaderBoard()
   {
-    SceneManager.LoadScene("Scoreboard");
+    SceneManager.LoadScene("Zen_Scoreboard");
   }
 
   public void Return()

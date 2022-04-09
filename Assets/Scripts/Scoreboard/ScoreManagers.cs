@@ -11,14 +11,18 @@ public class ScoreManagers : MonoBehaviour
   // Start is called before the first frame update
   void Awake()
   {
-    // var json = PlayerPrefs.GetString("scores", "{}");
-    //  sd = JsonUtility.FromJson<ScoreData>(json);
-    sd = new ScoreData();
+    var json = PlayerPrefs.GetString("scores", "{}");
+    if (json != null)
+    {
+      sd = JsonUtility.FromJson<ScoreData>(json);
+    }
+    //sd = new ScoreData();
   }
 
 
   public IEnumerable<Score> GetHighScores()
   {
+    Debug.log(sd.ToString());
     return sd.scores.OrderByDescending(x => x.score);
   }
 

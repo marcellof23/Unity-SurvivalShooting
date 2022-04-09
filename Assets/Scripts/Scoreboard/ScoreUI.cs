@@ -10,7 +10,7 @@ public class ScoreUI : MonoBehaviour
 
   void Start()
   {
-    scoreManager.AddScore(new Score("er", 6));
+    scoreManager.AddScore(new Score("eer", 6));
     scoreManager.AddScore(new Score("eran", 10));
     scoreManager.AddScore(new Score("asem", 15));
 
