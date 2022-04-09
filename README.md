@@ -1,92 +1,68 @@
 # IF3210-2022-Unity-03
 
-Tugas Besar PBD Unity Kelompok 03
+## Deskripsi Aplikasi
+Game "Pooja Shooter" merupakan sebuah game 3D Survival Shooter, dimana pemain akan berusaha untuk bertahan hidup melawan serangan dari monster - monster yang ada di dalam game. Game ini memiliki 2 buah mode permainan, yaitu **Zen Mode** dan **Wave Mode**, dimana di dalam zen mode, skor pemain akan dihitung dari seberapa lama pemain dapat bertahan hidup, sedangkan untuk wave mode, skor pemain akan dihitung dari skor total yang diperoleh saat mengalahkan musuh serta wave terjauh yang dapat dicapai oleh pemain.
 
-## Getting started
+Dalam game ini, pemain juga dapat memperoleh **Power Up** berupa **Orb** yang terdapat dalam permainan, adapun power up yang bisa diperoleh pemain dapat menaikkan atribut power (kekuatan shoot), speed (kecepatan gerak), dan health (jumlah nyawa) pemain. Selain itu, pemain juga dapat melakukan **Upgrade Weapon** dimana pemain dapat membuat senjatanya menjadi lebih kuat, adapun upgrade yang disediakan adalah upgrade untuk menambahkan bullet ke arah diagonal kiri dan kanan pemain, upgrade untuk meningkatkan firing rate senjata, serta upgrade untuk meningkatkan jarak tembakan senjata pemain.
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+Selain itu, terdapat pula **Local Scoreboard** yang mencatat pencapaian terbaik pemain di setiap game mode, agar nama setiap pemain bisa sesuai dengan kehendak pemain, terdapat fitur untuk mengganti nama pemain menjadi yang diinginkan pada main menu. Adapun untuk skornya akan diurutkan secara descending dari skor terbaik
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+Di dalam game ini juga terdapat beberapa mobs, yaitu :
+1. Zombear, musuh generic dari starter pack yang diberikan
+2. Zombunny, musuh generic dari starter pack yang diberikan
+3. Hellephant, musuh generic dari starter pack yang diberikan
+4. Skeleton, musuh yang tidak dapat bergerak namun dapat menembak pemain
+5. Bomber, musuh yang bergerak dengan sangat cepat dan akan meledak dan memberi damage ke pemain jika sudah berada dalam jarak yang dekat dengan pemain
+6. Boss, musuh yang kuat dan hanya muncul di wave tertentu
 
-## Add your files
+## Cara Kerja Aplikasi
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
+1. Attribute Player
 
-```
-cd existing_repo
-git remote add origin https://gitlab.informatika.org/DenilsenAxel/if3210-2022-unity-03.git
-git branch -M main
-git push -uf origin main
-```
+    Untuk fitur attribute player, kami mengimplementasi sebuah script yang mendefinisikan **Player Attribute**, mulai dari informasi atribute power, speed, hingga health player, nantinya ketika pemain meng-trigger / mengambil sebuah orb power up, script tersebut akan langsung melakukan update terhadap atribut pemain sesuai dengan orb power up yang diambil pemain.
 
-## Integrate with your tools
+2. Orbs
 
-- [ ] [Set up project integrations](https://gitlab.informatika.org/DenilsenAxel/if3210-2022-unity-03/-/settings/integrations)
+    Untuk fitur orbs, kami memasukkan asset dari setiap orbs ke dalam prefab sehingga mudah untuk di-instantiate nantinya. Kemudian kami membuat script orb manager yang berfungsi untuk mengatur spawn point setiap orb serta meng-invoke perintah untuk meng-spawn orb, adapun orb tersebut akan di-spawn oleh orb factory. Lalu terakhir kami membuat script orb detector yang berfungsi untuk mendeteksi apakah pemain mengambil suatu orb.
 
-## Collaborate with your team
+3. Additional Mobs
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Automatically merge when pipeline succeeds](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
+    Untuk fitur additional mobs, kami mengconfigure setiap mob lalu memasukkannya ke dalam prefab sehingga mudah untuk di-instantiate nantinya. Adapun untuk behaviour skeleton, kami mengubah sedikit logic menyerangnya dengan pertama - tama mendeteksi apakah pemain berada dalam shooting range mob, jika pemain berada dalam shooting range mob, maka mob akan mulai menembak ke arah pemain, kami kemudian menambahkan delay pada tembakan skeleton mob kami agar pemain bisa memiliki waktu untuk menghindari tembakan mob.
 
-## Test and Deploy
+    Kemudian untuk mob bomber, kami juga mengubah sedikit logic menyerangnya dengan langsung memg-trigger death dari mob ketika mob menyerang player, adapun kami juga memberi delay sebelum mob meledak serta radius ledakan agar player bisa menghindari ledakan dari bomber tersebut.
 
-Use the built-in continuous integration in GitLab.
+    Terakhir untuk mob boss, kami tidak mengubah logic apapun terkait attack, hanya membuat bossnya memiliki health yang besar serta power attack yang kuat.
 
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing(SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
+4. Game Mode
 
-***
+    Untuk zen mode, kami hanya menghitung waktu survival pemain dalam script timer manager kemudian menampilkannya dalam HUDCanvas. Adapun kami akan mengformat tampilan waktu survivalnya menjadi format `mm:ss`.
 
-# Editing this README
+    Untuk wave mode, kami membuat script wave manager yang berfungsi untuk meng-track current wave dan menyimpan state dari current wave tersebut. Adapun state dari wave ada wave number, enemy spawn weight (total weight enemy dalam suatu wave), enemies killed (total musuh yang sudah dikalahkan pemain dalam wave tersebut), total enemy (total musuh yang di-spawn di wave tersebut), current weight, dan is boss wave. State ini kemudian akan dimanfaatkan oleh script wave mode enemy manager dan enemy health, dimana wave mode enemy manager akan meng-spawn musuh sampai weight maksimum wave tercapai, dan enemy health akan mengubah nilai enemies killed ketika suatu musuh berhasil dikalahkan oleh pemain, terakhir ketika `enemiesKilled == totalEnemy`, next wave akan di-trigger, dimana state wave mode manager akan dan UI yang menampilkan current wave akan di-update. Boss akan di-spawn jika `isBossWave = waveNumber % 3 == 0`.
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!).  Thank you to [makeareadme.com](https://www.makeareadme.com/) for this template.
+5. Weapon Upgrade
 
-## Suggestions for a good README
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
+    Untuk fitur weapon upgrade,
 
-## Name
-Choose a self-explaining name for your project.
+6. Local Scoreboard
 
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
+    Untuk fitur local scoreboard, kami membuat scene baru yang berfungsi untuk menampilkan skor dari pemain untuk setiap game mode.
 
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
+7. Main Menu
 
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
+    Untuk fitur main menu, kami membuat scene baru yang terdiri dari beberapa button yang akan meng-trigger command untuk pindah ke scene yang bersesuaian.
 
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
+8. Game Over
 
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
+    Untuk fitur game over, kami membuat animasi sederhana yang menampilkan skor pemain, kemudian mengarahkan pemain ke scene game over yang memiliki button untuk memulai kembali permainan, atau kembali ke main menu.
 
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
+## Library yang Digunakan
 
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
+Dalam pengerjaan tugas besar ini, kami tidak menggunakan library eksternal, kami hanya memanfaatkan API yang disediakan oleh Unity, seperti **UnityEngine.UI** untuk meng-handle behaviour dari UI kami seperti contohnya **Button**, **InputField**, dan **Text**. Kami juga menggunakan **UnityEngine.SceneManagement** untuk meng-handle behaviour ketika pemain menekan tombol untuk berpindah scene.
 
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
+## Screenshoot Aplikasi
 
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
+1. ![Main Menu](/Screenshots/MainMenu.png "Main Menu")
+2. ![Change Name](/Screenshots/ChangeName.png "Change Name")
+3. ![Wave Mode](/Screenshots/WaveMode.png "Wave Mode")
+4. ![Zen Mode](/Screenshots/ZenMode.png "Zen Mode")
 
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
-
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
-
-## License
-For open source projects, say how it is licensed.
-
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
