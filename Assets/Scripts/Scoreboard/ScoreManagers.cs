@@ -7,38 +7,57 @@ using UnityEngine;
 public class ScoreManagers : MonoBehaviour
 {
 
-  private ScoreData sd;
+  public ScoreData sd;
   // Start is called before the first frame update
   void Awake()
   {
-    var json = PlayerPrefs.GetString("scores", "{}");
-    if (json != null)
+    var json = PlayerPrefs.GetString("scores_zen", "{ \"scores\" : []}");
+    Debug.Log(json);
+
+    sd = JsonUtility.FromJson<ScoreData>(json);
+    Debug.Log("EIII SCOREBOARD");
+    for (int i = 0; i < sd.scores.ToArray().Length; i++)
     {
-      sd = JsonUtility.FromJson<ScoreData>(json);
+      // Debug.Log(JsonUtility.ToJson(sd.scores[i]));
+      // Debug.Log(sd.scores[i].GetType());
+      // Debug.Log(sd.scores[i].getName().ToString());
+      // row.rank.text = (i + 1).ToString();
+      // row.name.text = scores[i].getName();
+      // row.score.text = scores[i].getScore().ToString();
     }
-    //sd = new ScoreData();
+    Debug.Log("EIIIF SCOREBOARD");
   }
 
 
-  public IEnumerable<Score> GetHighScores()
+  public Score[] GetHighScores()
   {
-    Debug.log(sd.ToString());
-    return sd.scores.OrderByDescending(x => x.score);
+    Debug.Log(JsonUtility.ToJson(sd));
+    Debug.Log(sd.scores.ToArray().Length.ToString());
+    return sd.scores.OrderByDescending(x => x.score).ToArray();
   }
 
   public void AddScore(Score score)
   {
+    Debug.Log(JsonUtility.ToJson(score));
+    Debug.Log(sd.scores.ToArray().Length.ToString());
     sd.scores.Add(score);
+    for (int i = 0; i < sd.scores.ToArray().Length; i++)
+    {
+      Debug.Log(JsonUtility.ToJson(sd.scores[i]));
+      Debug.Log(sd.scores[i].GetType());
+      Debug.Log(sd.scores[i].getName().ToString());
+    }
   }
-  private void OnDestroy()
-  {
-    SaveScore();
-  }
+
+
+  // private void OnDestroy()
+  // {
+  //   SaveScore();
+  // }
 
   public void SaveScore()
   {
     var json = JsonUtility.ToJson(sd);
-    Debug.Log(json);
-    PlayerPrefs.SetString("scores", json);
+    PlayerPrefs.SetString("scores_zen", json);
   }
 }

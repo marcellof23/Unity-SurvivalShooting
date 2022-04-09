@@ -40,6 +40,7 @@ public class PlayerAttributes : MonoBehaviour
 
   void Awake()
   {
+    // PlayerPrefs.DeleteKey("scores_zen");
     anim = GetComponent<Animator>();
     playerAudio = GetComponent<AudioSource>();
     playerMovement = GetComponent<PlayerMovement>();
@@ -110,11 +111,12 @@ public class PlayerAttributes : MonoBehaviour
     var playerName = PlayerPrefs.GetString("name");
 
     Score playerScore = new Score(playerName, scoreManager.getScore());
-    PlayerPrefs.SetString("scores", JsonUtility.ToJson(playerScore));
-    // Debug.Log(playerName);
-    // Debug.Log(scoreManager.getScore().ToString());
-    //GameObject scoreManagerss = GameObject.FindGameObjectWithTag("ScoreManagers");
-    // scoreManagers.AddScore(new Score(playerName, scoreManager.getScore()));
+    scoreManagers.AddScore(playerScore);
+    var json = JsonUtility.ToJson(scoreManagers.sd);
+    PlayerPrefs.SetString("scores_zen", json);
+    //scoreManagers.SaveScore();
+    Debug.Log(PlayerPrefs.GetString("scores_zen"));
+    //scoreManagersss.AddScore(playerScore);
 
     playerShooting.DisableEffects();
 

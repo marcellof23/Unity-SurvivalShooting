@@ -10,11 +10,12 @@ public class ScoreUI : MonoBehaviour
 
   void Start()
   {
-    scoreManager.AddScore(new Score("eer", 6));
-    scoreManager.AddScore(new Score("eran", 10));
-    scoreManager.AddScore(new Score("asem", 15));
+    // scoreManager.AddScore(new Score("eer", 6));
+    // scoreManager.AddScore(new Score("eran", 10));
+    // scoreManager.AddScore(new Score("asem", 15));
+    Debug.Log(scoreManager.GetHighScores().Length.ToString());
+    var scores = scoreManager.GetHighScores();
 
-    var scores = scoreManager.GetHighScores().ToArray();
     for (int i = 0; i < scores.Length; i++)
     {
       var row = Instantiate(rowUi, transform).GetComponent<RowUI>();
