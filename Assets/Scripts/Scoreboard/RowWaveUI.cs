@@ -1,9 +1,10 @@
 using UnityEngine.UI;
 using UnityEngine;
 
-public class RowUI : MonoBehaviour
+public class RowWaveUI : MonoBehaviour
 {
   public Text rank;
   public Text name;
-  public Text survival_time;
+  public Text wave;
+  public Text score;
 }

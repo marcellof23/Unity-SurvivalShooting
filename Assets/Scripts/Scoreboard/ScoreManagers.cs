@@ -20,7 +20,7 @@ public class ScoreManagers : MonoBehaviour
 
   public Score[] GetHighScores()
   {
-    return sd.scores.OrderByDescending(x => x.score).ToArray();
+    return sd.scores.OrderByDescending(x => x.survival_time).ToArray();
   }
 
   public void AddScore(Score score)
@@ -29,10 +29,10 @@ public class ScoreManagers : MonoBehaviour
   }
 
 
-   private void OnDestroy()
-   {
-     SaveScore();
-   }
+  private void OnDestroy()
+  {
+    SaveScore();
+  }
 
   public void SaveScore()
   {

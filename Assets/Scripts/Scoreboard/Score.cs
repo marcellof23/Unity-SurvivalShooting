@@ -5,12 +5,12 @@ using UnityEngine;
 public class Score
 {
   public string name;
-  public int score;
+  public int survival_time;
 
-  public Score(string name, int score)
+  public Score(string name, int survival_time)
   {
     this.name = name;
-    this.score = score;
+    this.survival_time = survival_time;
   }
 
   public string getName()
@@ -18,8 +18,8 @@ public class Score
     return name;
   }
 
-  public int getScore()
+  public int getSurvivalTime()
   {
-    return score;
+    return survival_time;
   }
 }

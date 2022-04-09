@@ -40,8 +40,7 @@ public class WaveModeEnemyManager : MonoBehaviour
 
     if (waveManager.isBossWave)
     {
-      buttonManager.ShowButtonUpgrade();
-      buttonManager.ShowButtonFaster();
+      buttonManager.triggerUpgradeButton();
       waveManager.isBossWave = false;
       SpawnBoss();
     }

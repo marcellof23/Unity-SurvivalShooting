@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Zen_Scoreboard.unity
     guid: 917def07bd47afbd5bccbc10d927cc33
+  - enabled: 1
+    path: Assets/Scenes/Wave_Scoreboard.unity
+    guid: 61ff3f5933cc0598e8c92bf465c758ff
   m_configObjects: {}

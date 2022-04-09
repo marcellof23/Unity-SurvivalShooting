@@ -11,7 +11,12 @@ public class PlayerAttributes : MonoBehaviour
 
   public ScoreManagers scoreManagers;
 
-  public ScoreManager scoreManager;
+  public WaveModeManager waveModeManager;
+
+  public WaveModeScoreManager waveModeScoreManager;
+
+  public ScoreWaveManagers scoreWaveManagers;
+  public TimerManager timerManager;
   public int currentHealth;
 
   public static int startingHealth = 100;
@@ -107,16 +112,28 @@ public class PlayerAttributes : MonoBehaviour
   void Death()
   {
     isDead = true;
-
     var playerName = PlayerPrefs.GetString("name");
 
-    Score playerScore = new Score(playerName, scoreManager.getScore());
-    scoreManagers.AddScore(playerScore);
+    Scene scene = SceneManager.GetActiveScene();
+    if (scene.name == "Zen_Mode")
+    {
+      Score playerScore = new Score(playerName, (int)TimerManager.survivalTime);
+      scoreManagers.AddScore(playerScore);
 
-    var json = JsonUtility.ToJson(scoreManagers.sd);
-    PlayerPrefs.SetString("scores_zen", json);
+      var json = JsonUtility.ToJson(scoreManagers.sd);
+      PlayerPrefs.SetString("scores_zen", json);
+    }
+    else if (scene.name == "Wave_Mode")
+    {
+      Debug.Log(waveModeManager.waveNumber);
+      Debug.Log(WaveModeScoreManager.score);
+      Debug.Log("ANJING");
+      ScoreWave playerScore = new ScoreWave(playerName, waveModeManager.waveNumber, WaveModeScoreManager.score);
+      scoreWaveManagers.AddScore(playerScore);
 
-    Debug.Log(PlayerPrefs.GetString("scores_zen"));
+      var json = JsonUtility.ToJson(scoreWaveManagers.sd);
+      PlayerPrefs.SetString("scores_wave", json);
+    }
 
     playerShooting.DisableEffects();
 

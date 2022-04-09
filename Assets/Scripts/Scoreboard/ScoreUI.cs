@@ -10,18 +10,16 @@ public class ScoreUI : MonoBehaviour
 
   void Start()
   {
-    // scoreManager.AddScore(new Score("eer", 6));
-    // scoreManager.AddScore(new Score("eran", 10));
-    // scoreManager.AddScore(new Score("asem", 15));
     Debug.Log(scoreManager.GetHighScores().Length.ToString());
     var scores = scoreManager.GetHighScores();
 
-    for (int i = 0; i < scores.Length; i++)
+    for (int i = 0; i < Math.Min(6, scores.Length); i++)
     {
       var row = Instantiate(rowUi, transform).GetComponent<RowUI>();
       row.rank.text = (i + 1).ToString();
       row.name.text = scores[i].getName();
-      row.score.text = scores[i].getScore().ToString();
+      Debug.Log(scores[i].getSurvivalTime().ToString());
+      row.survival_time.text = scores[i].getSurvivalTime().ToString();
     }
   }
 }

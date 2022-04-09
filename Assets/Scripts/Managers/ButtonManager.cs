@@ -33,8 +33,6 @@ public class ButtonManager : MonoBehaviour
   }
   public void ShowButtonUpgrade()
   {
-    Scene scene = SceneManager.GetActiveScene();
-
     if (ButtonDiagonalUpgrade.activeSelf)
     {
       ButtonDiagonalUpgrade.SetActive(false);
@@ -47,7 +45,6 @@ public class ButtonManager : MonoBehaviour
 
   public void ShowButtonFaster()
   {
-    Scene scene = SceneManager.GetActiveScene();
     if (ButtonFasterUpgrade.activeSelf)
     {
       ButtonFasterUpgrade.SetActive(false);
@@ -60,7 +57,6 @@ public class ButtonManager : MonoBehaviour
 
   public void ShowButtonRange()
   {
-    Scene scene = SceneManager.GetActiveScene();
     if (ButtonRangeUpgrade.activeSelf)
     {
       ButtonRangeUpgrade.SetActive(false);

@@ -1310,7 +1310,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreManagers: {fileID: 1701479257}
+  waveModeManager: {fileID: 0}
   scoreManager: {fileID: 945031966}
+  scoreWaveManagers: {fileID: 0}
+  timerManager: {fileID: 2094574562}
   currentHealth: 0
   currentHealthModifier: 0
   currentShootingPowerModifier: 1
