@@ -65,6 +65,10 @@ Dalam pengerjaan tugas besar ini, kami tidak menggunakan library eksternal, kami
 2. ![Change Name](/Screenshots/ChangeName.png "Change Name")
 3. ![Wave Mode](/Screenshots/WaveMode.png "Wave Mode")
 4. ![Zen Mode](/Screenshots/ZenMode.png "Zen Mode")
+5. ![Game Over Zen Mode](/Screenshots/GameOverZen.png "Game Over Zen Mode")
+6. ![Game Over Wave Mode](/Screenshots/GameOverWave.png "Game Over Wave Mode")
+7. ![Scoreboard Zen Mode](/Screenshots/ScoreboardZen.png "Scoreboard Zen Mode")
+8. ![Scoreboard Wave Mode](/Screenshots/ScoreboardWave.png "Scoreboard Wave Mode")
 
 ## Pembagian Tugas
 
